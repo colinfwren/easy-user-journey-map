@@ -186,8 +186,15 @@ function getNodesAndEdges(userJourneys: UserJourney[]): UserJourneyGraph {
   }
 }
 
-function createMermaidFlowChart(userJourneyGraph: UserJourneyGraph): string {
-  const connections = [...userJourneyGraph.edges.values()].map((task) => {
+function getEdgesForUserJourney(taskMap: Map<string, TaskEdge>, userJourneyId?: string): TaskEdge[] {
+  if (userJourneyId) {
+    return [...taskMap.values()].filter((task) => task.userJourneys.includes(userJourneyId))
+  }
+  return [...taskMap.values()]
+}
+
+function createMermaidFlowChart(userJourneyGraph: UserJourneyGraph, userJourneyId?: string): string {
+  const connections = getEdgesForUserJourney(userJourneyGraph.edges, userJourneyId).map((task) => {
     const sourceNode = userJourneyGraph.nodes.get(task.sourceScreen)
     const targetNode = userJourneyGraph.nodes.get(task.targetScreen)
     if (sourceNode && targetNode) {
@@ -208,7 +215,10 @@ async function processJourneys() {
     return extractJourneyDetails(tree as Root)
   }))
   const nodesAndEdges = getNodesAndEdges(userJourneys)
+  console.log('--- ALL JOURNEYS ---')
   console.log(createMermaidFlowChart(nodesAndEdges))
+  console.log('--- SINGLE JOURNEY ---')
+  console.log(createMermaidFlowChart(nodesAndEdges, 'existing-customer-buys-chocolates'))
 }
 
 processJourneys()
