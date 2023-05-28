@@ -186,6 +186,17 @@ function getNodesAndEdges(userJourneys: UserJourney[]): UserJourneyGraph {
   }
 }
 
+function createMermaidFlowChart(userJourneyGraph: UserJourneyGraph): string {
+  const connections = [...userJourneyGraph.edges.values()].map((task) => {
+    const sourceNode = userJourneyGraph.nodes.get(task.sourceScreen)
+    const targetNode = userJourneyGraph.nodes.get(task.targetScreen)
+    if (sourceNode && targetNode) {
+      return `${sourceNode.id}["${sourceNode.name}"] -- "${task.name}" --> ${targetNode.id}["${targetNode.name}"]`
+    }
+  }).join('\n')
+  return 'flowchart LR\n'+ connections
+}
+
 async function processJourneys() {
     // try {
   const cwd = path.resolve()
@@ -197,6 +208,7 @@ async function processJourneys() {
     return extractJourneyDetails(tree as Root)
   }))
   const nodesAndEdges = getNodesAndEdges(userJourneys)
+  console.log(createMermaidFlowChart(nodesAndEdges))
 }
 
 processJourneys()
