@@ -3,6 +3,7 @@
 The export from the tool can be embedded in Markdown and rendered in Github
 
 ```mermaid
+%%{init: {"flowchart": {"defaultRenderer": "elk"}} }%%
 flowchart LR
 landing-page["Landing page"] -- "Select chocolates" --> chocolate-listing-page["Chocolate listing page"]
 chocolate-listing-page["Chocolate listing page"] -- "Select chocolate to buy" --> chocolate-detail-page["Chocolate detail page"]
