@@ -8,7 +8,7 @@ export async function createD2FlowChart(userJourneyGraph: UserJourneyGraph, user
   const userJourneyGraphWithImages = await processScreenshots(userJourneyGraph)
   const nodes = [...userJourneyGraphWithImages.nodes.values()].map((node) => {
     if (node.image) {
-      return `${node.id}: {
+      return `${node.id}: ${node.name} {
   shape: image
   icon: ${IMAGE_PREFIX}/${node.image}
 }`
