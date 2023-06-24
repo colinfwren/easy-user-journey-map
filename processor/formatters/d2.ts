@@ -2,7 +2,7 @@ import { UserJourneyGraph } from "../types";
 import { getEdgesForUserJourney } from "../processors/graph";
 import {processScreenshots} from "../processors/screenshots";
 
-const IMAGE_PREFIX = 'https://raw.githubusercontent.com/colinfwren/easy-user-journey-map/main/journeys/screenshots'
+const IMAGE_PREFIX = 'journeys/screenshots'
 
 export async function createD2FlowChart(userJourneyGraph: UserJourneyGraph, userJourneyId?: string): Promise<string> {
   const userJourneyGraphWithImages = await processScreenshots(userJourneyGraph)
