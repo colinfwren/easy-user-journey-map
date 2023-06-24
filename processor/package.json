@@ -19,6 +19,6 @@
     "typescript": "^5.0.4"
   },
   "scripts": {
-    "start": "ts-node-esm ./index.ts"
+    "start": "ts-node-esm --experimental-specifier-resolution=node ./index.ts"
   }
 }
