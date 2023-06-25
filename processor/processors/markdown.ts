@@ -49,6 +49,7 @@ function extractScreens(tree: Root): Screen[] {
             return {
               ...screen,
               id: `post-${screen.id}`,
+              intermittent: true,
               tasks: [
                 {
                   id: nextTask.id,
@@ -62,6 +63,7 @@ function extractScreens(tree: Root): Screen[] {
             return {
               ...screen,
               id: `post-${screen.id}`,
+              intermittent: true,
               tasks: [
                 {
                   id: nextTask.id,
@@ -78,6 +80,7 @@ function extractScreens(tree: Root): Screen[] {
           {
             id: screenId,
             name: screenName,
+            intermittent: false,
             tasks: [
               {
                 ...intermittentScreens[0],
@@ -94,6 +97,7 @@ function extractScreens(tree: Root): Screen[] {
         {
           id: screenId,
           name: screenName,
+          intermittent: false,
           tasks: tasks.children.map((taskNode): Task => {
             const taskName = getListItemText(taskNode)
             const taskId = slugify(taskName.toLowerCase())
@@ -112,6 +116,7 @@ function extractScreens(tree: Root): Screen[] {
       {
         id: screenId,
         name: screenName,
+        intermittent: false,
         tasks: []
       }
     ]

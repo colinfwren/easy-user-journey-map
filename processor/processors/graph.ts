@@ -10,7 +10,7 @@ export function getNodesAndEdges(userJourneys: UserJourney[]): UserJourneyGraph 
       if (existingScreen) {
         screenMap.set(existingScreen.id, { ...existingScreen, userJourneys: [...existingScreen.userJourneys, userJourney.id ]})
       } else {
-        screenMap.set(screen.id, { id: screen.id, name: screen.name, userJourneys: [userJourney.id] })
+        screenMap.set(screen.id, { ...screen, userJourneys: [userJourney.id] })
       }
       screen.tasks.map((task) => {
         const existingTask = taskMap.get(task.id)

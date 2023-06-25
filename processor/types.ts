@@ -9,6 +9,7 @@ export type Screen = {
   name: string
   tasks: Task[]
   image?: string
+  intermittent?: boolean
 }
 
 export type Task = {

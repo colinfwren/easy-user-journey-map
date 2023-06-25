@@ -23,9 +23,22 @@ export async function createD2FlowChart(userJourneyGraph: UserJourneyGraph, user
       return `${sourceNode.id} --> ${targetNode.id}: ${task.name}`
     }
   }).join('\n')
+
+
+  const intermittentNodes =  [...userJourneyGraphWithImages.nodes.values()].filter((node) => node.intermittent).map((node) => {
+    return `${node.id}.class: intermittent`
+  }).join('\n')
   return `direction: right
 ${nodes}
   
 ${connections}
+
+classes: {
+  intermittent: {
+    style.opacity: 0.5
+  }
+}
+
+${intermittentNodes}
 `
 }
