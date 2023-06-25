@@ -9,6 +9,7 @@ import { extractJourneyDetails } from "./processors/markdown";
 import { getNodesAndEdges } from "./processors/graph";
 import { createCSVFile, createLucidChartCSVRows } from "./formatters/lucidChart";
 import {createD2FlowChart} from "./formatters/d2";
+import {createStateChart} from "./formatters/stateChart";
 
 
 async function processJourneys() {
@@ -24,8 +25,9 @@ async function processJourneys() {
   const nodesAndEdges = getNodesAndEdges(userJourneys)
   console.log('--- ALL JOURNEYS ---')
   // console.log(await createMermaidFlowChart(nodesAndEdges))
-  console.log(await createD2FlowChart(nodesAndEdges))
-  // console.log(createCSVFile(createLucidChartCSVRows(nodesAndEdges)))
+  // console.log(await createD2FlowChart(nodesAndEdges))
+  console.log(createCSVFile(createLucidChartCSVRows(nodesAndEdges)))
+  // console.log(createStateChart(nodesAndEdges))
   console.log('--- SINGLE JOURNEY ---')
   // console.log(createMermaidFlowChart(nodesAndEdges, 'existing-customer-buys-chocolates'))
   // console.log(createD2FlowChart(nodesAndEdges, 'existing-customer-buys-chocolates'))

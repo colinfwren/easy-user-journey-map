@@ -10,6 +10,8 @@ export type Screen = {
   tasks: Task[]
   image?: string
   intermittent?: boolean
+  isInitialScreen?: boolean
+  isGoalScreen?: boolean
 }
 
 export type Task = {

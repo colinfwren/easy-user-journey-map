@@ -8,7 +8,15 @@ export function getNodesAndEdges(userJourneys: UserJourney[]): UserJourneyGraph 
     userJourney.screens.map((screen) => {
       const existingScreen = screenMap.get(screen.id)
       if (existingScreen) {
-        screenMap.set(existingScreen.id, { ...existingScreen, userJourneys: [...existingScreen.userJourneys, userJourney.id ]})
+        screenMap.set(existingScreen.id, {
+          ...existingScreen,
+          isInitialScreen: existingScreen.isInitialScreen || screen.isInitialScreen,
+          isGoalScreen: existingScreen.isGoalScreen || screen.isGoalScreen,
+          userJourneys: [
+              ...existingScreen.userJourneys,
+            userJourney.id
+          ]
+        })
       } else {
         screenMap.set(screen.id, { ...screen, userJourneys: [userJourney.id] })
       }
