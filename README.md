@@ -27,3 +27,16 @@ different formats.
 So far MermaidJS and LucidChart CSV are supported.
 
 NOTE: There is a bug in LucidChart's CSV import which means tasks won't have their User Journeys set up in the shape data
+
+## Installation and Running It
+You can either:
+- Clone the repo `git clone git@github.com:colinfwren/easy-user-journey-map.git` using Git
+- Download a .zip of the files [https://github.com/colinfwren/easy-user-journey-map/archive/refs/heads/main.zip](https://github.com/colinfwren/easy-user-journey-map/archive/refs/heads/main.zip)
+
+Once you have the code downloaded you'll need to:
+- Open your Terminal and `cd` into the `processor` directory (on Mac you can type `cd` and drag the folder from Finder into the Terminal window to make this easier) and press enter to change to that directory
+- Once in the directory type `npm install --global yarn` and press enter which will install Yarn, a tool used to install dependencies and run the code
+- Once Yarn is installed type `yarn install` and press enter to install the dependencies
+- Once Yarn has installed the dependencies type `yarn start` to run the tool
+
+It's worth noting that `yarn start` will output all representations of the map so you'll need to scroll up on the output to find the one you want to use. Eventually I'll build a CLI tool to make this easier.
