@@ -51,3 +51,10 @@ export type LucidChartCsvRow = {
   Comments?: string,
   'User Journeys'?: string
 }
+
+export type XstateTransition = {
+  target: string,
+  internal?: boolean
+}
+
+export type XstateTransitionMap = Record<string, XstateTransition>

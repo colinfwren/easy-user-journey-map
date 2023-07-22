@@ -108,7 +108,7 @@ function extractScreens(tree: Root): Screen[] {
           isGoalScreen: index === screenNodes.length - 1,
           tasks: tasks.children.map((taskNode): Task => {
             const taskName = getListItemText(taskNode)
-            const taskId = slugify(taskName.toLowerCase())
+            const taskId = slugify(`${screenId}-${taskName.toLowerCase()}-${nextScreenId}`)
             return {
               id: taskId,
               name: taskName,
